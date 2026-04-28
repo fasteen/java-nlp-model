@@ -3,6 +3,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.ObjectOutputStream;
 import java.util.*;
+
+
  class Model  implements java.io.Serializable{
     private static final long serialVersionUID = 1L;
 
@@ -150,7 +152,7 @@ public class practice {
 
     for(String w:word){
 
-        if(!vacob.containsKey(w)) continue; // ✅ SAFE
+        if(!vacob.containsKey(w)) continue; 
 
         int idx = vacob.get(w);
 
@@ -180,7 +182,7 @@ public class practice {
         out.writeObject(nextWordId);            
 
         out.close();
-        System.out.println("✅ Model saved");
+        System.out.println(" Model saved");
 
     } catch (Exception e) {
         e.printStackTrace();
