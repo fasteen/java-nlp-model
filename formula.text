@@ -17,9 +17,7 @@ Output Error
 δ_out = ŷ - y
 
 Update W2 and b2
-
 W2 = W2 - η · (δ_out · h^T)
-
 b2 = b2 - η · δ_out
 
 Hidden Error  
