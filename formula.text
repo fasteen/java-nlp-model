@@ -1,0 +1,42 @@
+Input (vectorized sentence)
+x ∈ ℝ⁶⁴
+
+Forward Pass
+h = ReLU(W1 · x + b1)
+z = W2 · h + b2
+ŷ = softmax(z)
+
+Softmax
+ŷ_i = exp(z_i) / Σ exp(z_j)
+
+
+Loss
+L = -log(ŷ_target)
+
+Output Error
+δ_out = ŷ - y
+
+Update W2 and b2
+
+W2 = W2 - η · (δ_out · h^T)
+
+b2 = b2 - η · δ_out
+
+Hidden Error  
+δ_hidden = (W2^T · δ_out) ⊙ ReLU'(h)
+
+ReLU Derivative
+ReLU'(h) = 1 if h > 0 else 0
+
+Update W1 and b1
+W1 = W1 - η · (δ_hidden · x^T)
+b1 = b1 - η · δ_hidden
+
+Input Gradient
+∂L/∂x = W1^T · δ_hidden
+
+Embedding Update
+E_w = E_w - η · (∂L/∂x) / n
+
+Vectorization (Mean Embedding)
+x = (1/n) · Σ E_wi
